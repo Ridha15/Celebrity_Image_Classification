@@ -9,6 +9,7 @@ from sklearn.metrics import classification_report
 from tqdm import tqdm
 from keras.utils import to_categorical
 
+# function to load and process images
 def load_and_preprocess_image(img_path):
     image = cv2.imread(img_path)
     image = Image.fromarray(image, 'RGB')
@@ -45,7 +46,7 @@ for class_name, class_label in class_directories.items():
         if image_name.split('.')[-1].lower() == 'png':
             img_path = os.path.join(image_dir, class_name, image_name)
             original_image = load_and_preprocess_image(img_path)
-        
+            # augmenting each image 10 times
             for _ in range(10):  
                 augmented_image = datagen.random_transform(original_image)
                 dataset.append(augmented_image)
@@ -75,6 +76,7 @@ y_train_encoded = to_categorical(y_train, num_classes=5)
 y_test_encoded = to_categorical(y_test, num_classes=5)
 class_names = ['Lionel Messi', 'Maria Sharapova', 'Roger Federer', 'Serena Williams', 'Virat Kohli']
 
+# model architecture
 model = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(128, 128, 3)),
     tf.keras.layers.MaxPooling2D((2, 2)),
@@ -115,11 +117,15 @@ y_pred_classes = np.argmax(y_pred, axis=1)
 print('Classification Report\n', classification_report(y_test, y_pred_classes, target_names=class_names))
 print("--------------------------------------\n")
 
+#saving the model
 model.save("celebrity_model.h5")
+
+# loading the model for predictions
 saved_model = tf.keras.models.load_model("celebrity_model.h5")
 
 print("--------------------------------------\n")
 print("Model Prediction.\n")
+# function to make predictions on new images
 def make_prediction(img, model):
     img = cv2.imread(img)
     img = Image.fromarray(img, 'RGB')
@@ -131,6 +137,7 @@ def make_prediction(img, model):
     predicted_class_name = class_names[predicted_class]
     return predicted_class_name
 
+# predictions on new images
 print(make_prediction('cropped/fed_test.png', saved_model))
 print(make_prediction('cropped/kohli_test.jpeg', saved_model))
 print(make_prediction('cropped/maria_test.jpg', saved_model))

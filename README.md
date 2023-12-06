@@ -25,7 +25,7 @@ The model is trained using a training pipeline that includes data augmentation t
 
 ## Data Augmentation
 
-The dataset is augmented by applying random transformations to each image. For each original image, 15 augmented versions are generated using random rotations, shifts, shearing, zooming, and horizontal flips.Augmentation enhances the diversity of the training dataset, contributing to improved model generalization.
+The dataset is augmented by applying random transformations to each image. For each original image, 10 augmented versions are generated using random rotations, shifts, shearing, zooming, and horizontal flips.Augmentation enhances the diversity of the training dataset, contributing to improved model generalization.
 
 ## Training Parameters
 
@@ -42,7 +42,7 @@ The model's performance is evaluated using accuracy and the classification repor
 
 ## Conclusion
 
-The model achieves good accuracy of % on the testing set, showing it's ability to cassify celebrity images. Early stopping helps prevent overfitting, and data augmentation contributes to the model's ability to generalize well to unseen data. The classification report provides detailed insights into the model's performance for each celebrity class.
+The model achieves good accuracy of 96% on the testing set, showing it's ability to classify celebrity images. Early stopping helps prevent overfitting, and data augmentation contributes to the model's ability to generalize well to unseen data. The classification report provides detailed insights into the model's performance for each celebrity class.
 
 ## Usage
 
@@ -54,6 +54,5 @@ The trained model is saved as "celebrity_model.h5" for future use. To make predi
 - TensorFlow
 - NumPy
 - OpenCV
-- Matplotlib
 - scikit-learn
 

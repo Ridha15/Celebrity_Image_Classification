@@ -1,12 +1,12 @@
-# Celebrity_Image_Classification
+# Celebrity Image Classification using CNN
 
 #### The proposed image classification model is designed for classifying images of five different celebrities: Lionel Messi, Maria Sharapova, Roger Federer, Serena Williams, and Virat Kohli. The model architecture consists of convolutional layers for feature extraction, max-pooling layers for down-sampling, and fully connected layers for classification. The model is trained on a dataset of augmented images using the ImageDataGenerator for data augmentation.
 ## Model Architecture
-### Input Shape: (128, 128, 3) - 128x128 pixels RGB images
-### Convolutional Layers:
-####       Conv2D with 32 filters and a (3, 3) kernel, followed by ReLU activation and MaxPooling (2, 2).
-####       Conv2D with 64 filters and a (3, 3) kernel, followed by ReLU activation and MaxPooling (2, 2).
-####       Conv2D with 128 filters and a (3, 3) kernel, followed by ReLU activation and MaxPooling (2, 2).
+#### - Input Shape: (128, 128, 3) - 128x128 pixels RGB images
+#### - Convolutional Layers:
+#####       ~ Conv2D with 32 filters and a (3, 3) kernel, followed by ReLU activation and MaxPooling (2, 2).
+#####       ~ Conv2D with 64 filters and a (3, 3) kernel, followed by ReLU activation and MaxPooling (2, 2).
+#####       ~ Conv2D with 128 filters and a (3, 3) kernel, followed by ReLU activation and MaxPooling (2, 2).
 
 ### Flatten Layer: Flattens the output for input to Dense layers.
 ### Dense Layers:
